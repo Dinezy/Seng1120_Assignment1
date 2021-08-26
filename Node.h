@@ -16,6 +16,7 @@ private:
     value_type data; // the data the Node holds
     Node* next; // a pointer to the next Node
     Node* prev; // a pointer to the previous Node
+
 };
 
 
