@@ -16,9 +16,9 @@ public:
     LinkedList(); // constructor
     ~LinkedList(); // destructor
 
-    void addToHead();
+    void addToHead(value_type data);
 
-    void addToTail();
+    void addToTail(value_type data);
 
     void remove();
 
@@ -39,7 +39,7 @@ private:
 
 
 };
-    ostream &operator<<(ostream &out, const value_type &tollBooth);
+    std::ostream &operator<<(std::ostream &out, const LinkedList &tollBooth);
 
 #endif //LinkedList_header
 

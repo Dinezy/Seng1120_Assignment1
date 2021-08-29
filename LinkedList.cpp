@@ -7,28 +7,21 @@
 #include "LinkedList.h"
 #include "EToll.h"
 
+typedef Node::value_type value_type;
+
 LinkedList::LinkedList(){
     head = NULL;
     tail = NULL;
     //  list_length = 0;    Dont think I need this yet??
 }
 
-
-Linkedlist::LinkedList(data_type& data){
-    head = new node(data);
-    tail = head;
-    //list_length = 1;      //hmmm?
-}
-
 LinkedList::~LinkedList(){
-    while(head != null){
-        remove_from_head(); // need to create this function
-    }
-    tail = null;
+
+
 }
 
-void LinkedList::addToHead(data_type& data){
-    if(list_length == 0){
+void LinkedList::addToHead(value_type data){
+    /*if(list_length == 0){
         head = new node(data)
     }else{
         //creates node on heap
@@ -47,13 +40,13 @@ void LinkedList::addToHead(data_type& data){
         //sets temp var to null
         head_insert = null;
 
-         }
-};
+         }*/
+}
 
 
-void LinkedList::addToTail(data_type& data){
+void LinkedList::addToTail(value_type data){
     //add node for empty list
-    if(list_length == 0){
+    /*if(list_length == 0){
         head = new node(data);
         tail = head;
         list_length = 1;
@@ -62,7 +55,7 @@ void LinkedList::addToTail(data_type& data){
         node* tail_insert = new node(data);
 
         //set tail next to the new tail and set new nodes previous
-        tail -> set_next(tail_insert);
+        tail -> setNext(tail_insert);
         tail_insert -> set_previous(tail);
 
         // set the tail to the new node
@@ -73,11 +66,51 @@ void LinkedList::addToTail(data_type& data){
 
         //sets temp var to null
         tail_insert = null;
+    }*/
+}
+
+void LinkedList::remove(){
+    /*//TODO: this block removes the Tail
+    if(list_length == 0){
+        return;
+    }else if(list_length == 1){
+        delete head;
+        head = null;
+        tail = null;
+        return
+    }else {
+        //makes temp = current
+        node *temp_tail = tail;
+        // rearrange the tail for the list
+        tail = temp_tail->prev();
+        // remove temp
+        delete temp_tail
+        //decrement length
+        list_length--;
+        //set to null
+        temp_tail = NULL;
     }
-};
 
-void remove(){
+    //TODO: this block removes from head
+    if(list_length == 0) {
+        return;
+    }else if(list_length == 1) {
+        delete head;
+        head = null;
+        tail = null;
+        list_length--;
+        return;
+    }else {
+        node *temp_head = head;
 
+        head = temp_head-> next();
+
+        delete temp_head;
+
+        list_length--;
+
+        temp_head = null;
+    }*/
 };
 
 void count(){
@@ -88,12 +121,14 @@ void tollIncome(){
 
 };
 
-void operator+=(const value_type &tollBooth){
+void LinkedList::operator+=(const value_type &tollBooth){
 
 };
 
-void operator-=(const value_type &tollBooth){
+void LinkedList::operator-=(const value_type &tollBooth){
 
 };
 
-
+std::ostream &operator<<(std::ostream &out, const LinkedList &tollBooth){
+    return out;
+}
