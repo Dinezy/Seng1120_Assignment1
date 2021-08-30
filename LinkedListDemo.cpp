@@ -32,7 +32,7 @@ void initialize(LinkedList &l1, LinkedList &l2)
 	c.set_all("OYTCO7", "Car", 5.00);
 	l1.addToTail(c);
 	
-	/*c.set_all("GFV349", "Car", 5.00);
+	c.set_all("GFV349", "Car", 5.00);
 	l2.addToHead(c);						// .addToHead() function
 	c.set_all("NIO324", "Truck", 12.00);
 	l2.addToHead(c);
@@ -44,7 +44,7 @@ void initialize(LinkedList &l1, LinkedList &l2)
 	l2.addToHead(c);
 	c.set_all("GFCU49", "Car", 5.00);
 	l2.addToHead(c);
-	 */
+
 }
 
 // Entry Point
@@ -58,10 +58,10 @@ int main()
 	// add data
 	initialize(tollBooth1, tollBooth2);
 
-	/*cout << "Start lists:" << endl;
+	cout << "Start lists:" << endl;
 	cout << "Booth 1: " << tollBooth1 << endl;		// stream insertion operator (ie: operator <<)
 	cout << "Booth 2: " << tollBooth2 << endl;
-	cout << "Daily total: " << dailyReport << endl;
+	cout << "Daily total: " << dailyReport << endl;/*
 	
 	cout << "=====================================================" << endl;
 	cout << "Removing vehicle 'NIO324' from Booth 2." << endl;

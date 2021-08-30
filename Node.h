@@ -10,20 +10,22 @@ typedef EToll value_type;
 class Node
 {
 
-    void setNextNode(Node* next_);
-    Node* getNextNode();
 
-    void setPrevNode(Node* prev_);
-    Node* getPrevNode();
-    void SetData(value_type& data_);
 
-    value_type getData();
+
 
 
     public:
         typedef EToll value_type; // type
         Node(); // constructor
         ~Node(); // destructor
+        void setNextNode(Node* next_);
+        Node* getNextNode();
+
+        void setPrevNode(Node* prev_);
+        Node* getPrevNode();
+        void setData(value_type& data_);
+        value_type getData();
 
     private:
         value_type data; // the data the Node holds

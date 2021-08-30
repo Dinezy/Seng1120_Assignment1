@@ -12,6 +12,8 @@ typedef Node::value_type value_type;
 LinkedList::LinkedList(){
     head = NULL;
     tail = NULL;
+    current = NULL;
+    size = 0;
     //  list_length = 0;    Dont think I need this yet??
 }
 
@@ -21,64 +23,67 @@ LinkedList::~LinkedList(){
 }
 
 void LinkedList::addToHead(value_type data){
-    /*if(list_length == 0){
-        head = new node(data)
-    }else{
-        //creates node on heap
-        node* head_insert = new node(data); //new variable here
+    if(size == 0){
+        Node* temp_Head = new Node;
+        temp_Head->setData(data);
+        head = temp_Head;
+        temp_Head->setNextNode(NULL);
+        temp_Head->setPrevNode(NULL);
+        tail = head;
+        size++;
+        current = head;
+        temp_Head = NULL;
 
-        //sets the heads previous to the new head and set the next nodes next
-        head -> set_previous(head_insert);  //Got some new functions here
-        head_insert -> set_next(head);
-
-        // set the head to the new node
-        head = head_insert;
-
-        //increment the list
-        list_length++; //i need to implement this better
-
-        //sets temp var to null
-        head_insert = null;
-
-         }*/
+    }else if(size > 0){
+        Node* temp_Head = new Node;
+        temp_Head->setData(data);
+        temp_Head->setNextNode(head);
+        temp_Head->setPrevNode(NULL);
+        head->setPrevNode(temp_Head);
+        head = temp_Head;
+        size++;
+        temp_Head = NULL;
+    }
 }
 
 
 void LinkedList::addToTail(value_type data){
-    //add node for empty list
-    /*if(list_length == 0){
-        head = new node(data);
-        tail = head;
-        list_length = 1;
-    }else{
-        //create new node on the heap
-        node* tail_insert = new node(data);
+     if(size == 0){
+        Node* temp_Tail = new Node;
+        temp_Tail->setData(data);
+        tail = temp_Tail;
+        temp_Tail->setNextNode(NULL);
+        temp_Tail->setPrevNode(NULL);
+        head = tail;
+        size++;
+        current = head;
+        temp_Tail = NULL;
 
-        //set tail next to the new tail and set new nodes previous
-        tail -> setNext(tail_insert);
-        tail_insert -> set_previous(tail);
+    }else if(size > 0){
+        Node* temp_Tail = new Node;
+        temp_Tail->setData(data);
+        temp_Tail->setNextNode(NULL);
+        temp_Tail->setPrevNode(tail);
+        tail->setNextNode(temp_Tail);
+        tail = temp_Tail;
+        size++;
+        temp_Tail = NULL;
 
-        // set the tail to the new node
-        tail = tail_insert;
-
-        //increment list
-        list_length++;
-
-        //sets temp var to null
-        tail_insert = null;
-    }*/
+    }
 }
 
 void LinkedList::remove(){
     /*//TODO: this block removes the Tail
     if(list_length == 0){
         return;
-    }else if(list_length == 1){
+    }else if(list_length > 0){
         delete head;
         head = null;
         tail = null;
         return
     }else {
+     //TODO: reeeeeeeeeeeeeeee
+
         //makes temp = current
         node *temp_tail = tail;
         // rearrange the tail for the list
@@ -86,7 +91,7 @@ void LinkedList::remove(){
         // remove temp
         delete temp_tail
         //decrement length
-        list_length--;
+        size--;
         //set to null
         temp_tail = NULL;
     }
@@ -94,13 +99,14 @@ void LinkedList::remove(){
     //TODO: this block removes from head
     if(list_length == 0) {
         return;
-    }else if(list_length == 1) {
+    }else if(list_length > 0) {
         delete head;
         head = null;
         tail = null;
-        list_length--;
+        size--;
         return;
     }else {
+        //TODO: reeeeeeeeeeeeeeee
         node *temp_head = head;
 
         head = temp_head-> next();
@@ -127,8 +133,43 @@ void LinkedList::operator+=(const value_type &tollBooth){
 
 void LinkedList::operator-=(const value_type &tollBooth){
 
-};
+}
+void LinkedList::setCurrent(){
+    current = head;
+}
 
-std::ostream &operator<<(std::ostream &out, const LinkedList &tollBooth){
+bool LinkedList::isNULL(){
+    if(current == NULL){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void LinkedList::setNewCurrent(){
+    current = current->getNextNode();
+}
+
+value_type LinkedList::getData(){
+    return current->getData();
+}
+
+bool LinkedList::emptyList() {
+    if(size > 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+std::ostream &operator<<(std::ostream &out, LinkedList &tollBooth) {
+    if (tollBooth.emptyList()) {
+        out << "List is empty.";
+    } else {
+    for (tollBooth.setCurrent(); !tollBooth.isNULL(); tollBooth.setNewCurrent()) {
+        out << tollBooth.getData();
+    }
+    tollBooth.setCurrent();
+    }
     return out;
 }

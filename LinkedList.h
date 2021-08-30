@@ -30,6 +30,19 @@ public:
 
     void operator-=(const value_type &tollBooth);
 
+    void setCurrent();
+
+    bool isNULL();
+
+    void setNewCurrent();
+
+    value_type getData();
+
+    bool emptyList();
+
+
+
+
 private:
     Node* head;
     Node* tail;
@@ -39,7 +52,7 @@ private:
 
 
 };
-    std::ostream &operator<<(std::ostream &out, const LinkedList &tollBooth);
+    std::ostream &operator<<(std::ostream &out, LinkedList &tollBooth);
 
 #endif //LinkedList_header
 

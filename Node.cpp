@@ -33,8 +33,8 @@ Node* Node::getPrevNode(){
     return prev;
 }
 
-void Node::SetData(value_type& data_){
-    data = data_;
+void Node::setData(value_type& data_){
+        data = data_;
 }
 
 value_type Node::getData(){
