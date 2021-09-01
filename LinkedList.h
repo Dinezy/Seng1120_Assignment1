@@ -20,15 +20,15 @@ public:
 
     void addToTail(value_type data);
 
-    void remove();
+    void remove(string plate);
 
     void count();
 
     void tollIncome();
 
-    void operator+=(const value_type &tollBooth);
+    void operator+=(LinkedList &tollBooth);
 
-    void operator-=(const value_type &tollBooth);
+    void operator-=(LinkedList &tollBooth);
 
     void setCurrent();
 

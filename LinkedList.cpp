@@ -46,7 +46,6 @@ void LinkedList::addToHead(value_type data){
     }
 }
 
-
 void LinkedList::addToTail(value_type data){
      if(size == 0){
         Node* temp_Tail = new Node;
@@ -72,66 +71,57 @@ void LinkedList::addToTail(value_type data){
     }
 }
 
-void LinkedList::remove(){
-    /*//TODO: this block removes the Tail
-    if(list_length == 0){
-        return;
-    }else if(list_length > 0){
-        delete head;
-        head = null;
-        tail = null;
-        return
-    }else {
-     //TODO: reeeeeeeeeeeeeeee
+void LinkedList::remove(string plate){
 
-        //makes temp = current
-        node *temp_tail = tail;
-        // rearrange the tail for the list
-        tail = temp_tail->prev();
-        // remove temp
-        delete temp_tail
-        //decrement length
-        size--;
-        //set to null
-        temp_tail = NULL;
+    //first find the right node
+    for(setCurrent(); !isNULL(); setNewCurrent()) {
+        //node is now found
+        if(current->get_license.getData() == plate){
+            //assign current nodes to temp vars
+            Node* temp_prev = current->getPrevNode();
+            Node* temp_next = current->getNextNode();
+
+            if(temp_next == NULL){
+                // on edge
+                temp_prev->setNextNode(NULL);
+                delete current;
+                temp_prev = NULL;
+                temp_next = NULL;
+                setCurrent();
+
+            }else if(temp_prev == NULL){
+                //other edge
+                temp_next->setPrevNode(NULL);
+                delete current;
+                temp_next = NULL;
+                temp_prev = NULL;
+                setCurrent();
+
+            }else {
+                //ye
+                temp_next->setPrevNode(temp_prev);
+                temp_prev->setNextNode(temp_next);
+                delete current;
+                temp_next = NULL;
+                temp_prev = NULL;
+                setCurrent();
+            }
+        }
+    }
+}
+
+
+void LinkedList::operator+=(LinkedList &tollBooth){
+
+    for(tollBooth.setCurrent(); !tollBooth.isNULL(); tollBooth.setNewCurrent()) {
+        addToTail(tollBooth.getData());
     }
 
-    //TODO: this block removes from head
-    if(list_length == 0) {
-        return;
-    }else if(list_length > 0) {
-        delete head;
-        head = null;
-        tail = null;
-        size--;
-        return;
-    }else {
-        //TODO: reeeeeeeeeeeeeeee
-        node *temp_head = head;
+}
 
-        head = temp_head-> next();
+void LinkedList::operator-=(LinkedList &tollBooth){
 
-        delete temp_head;
-
-        list_length--;
-
-        temp_head = null;
-    }*/
-};
-
-void count(){
-
-};
-
-void tollIncome(){
-
-};
-
-void LinkedList::operator+=(const value_type &tollBooth){
-
-};
-
-void LinkedList::operator-=(const value_type &tollBooth){
+    
 
 }
 void LinkedList::setCurrent(){
@@ -173,3 +163,7 @@ std::ostream &operator<<(std::ostream &out, LinkedList &tollBooth) {
     }
     return out;
 }
+
+void count(){};
+
+void tollIncome(){};
