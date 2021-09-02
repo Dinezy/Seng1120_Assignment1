@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include "Node.h"
 
 #ifndef LinkedList_header
@@ -20,11 +21,11 @@ public:
 
     void addToTail(value_type data);
 
-    void remove(string plate);
+    void remove(const string plate);
 
-    int count(string count);
+    const int count(const string count);
 
-    float totalIncome();
+    const double totalIncome();
 
     void operator+=(LinkedList &tollBooth);
 
@@ -32,15 +33,17 @@ public:
 
     void setCurrent();
 
-    bool isNULL();
+    const bool isNULL() const;
 
     void setNewCurrent();
 
-    value_type getData();
+    value_type getData() const;
 
-    bool emptyList();
+    const bool emptyList() const;
 
+    void order();
 
+    void swap(Node* next_, Node* prev_);
 
 
 private:

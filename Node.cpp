@@ -6,7 +6,8 @@
 typedef Node::value_type value_type;
 
 Node::Node(){
-    prev = NULL;
+    //default constructor
+    prev = NULL;        //initially setting nodes to null
     next = NULL;
 }
 
@@ -18,25 +19,25 @@ Node::~Node(){
 }
 
 void Node::setNextNode(Node* next_){
-    next = next_;
+    next = next_;               //moves requested next to next Node
 }
 
 Node* Node::getNextNode(){
-    return next;
+    return next;                //returns next
 }
 
 void Node::setPrevNode(Node* prev_){
-    prev = prev_;
+    prev = prev_;               //moves requested prev to prev node
 }
 
 Node* Node::getPrevNode(){
-    return prev;
+    return prev;                //returns prev
 }
 
 void Node::setData(value_type& data_){
-        data = data_;
+        data = data_;           //moves data into data node
 }
 
 value_type Node::getData(){
-    return data;
+    return data;                //returns data
 }

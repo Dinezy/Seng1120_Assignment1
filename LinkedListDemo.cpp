@@ -101,15 +101,16 @@ int main()
 	cout << "Booth 1: " << tollBooth1 << endl;
 	cout << "Booth 2: " << tollBooth2 << endl;
 	cout << "Daily report: " << dailyReport  << endl << endl;
-/*
+
 	// For bonus question, uncomment this section
-	// cout << "=====BONUS QUESTION======" << endl;
-	// cout << "Ordering the two toll booths." << endl;
-	// tollBooth1.order();
-	// tollBooth2.order();
-	// cout << "Booth 1: " << tollBooth1 << endl;
-	// cout << "Booth 2: " << tollBooth2 << endl << endl;
-		*/
+	 cout << "=====BONUS QUESTION======" << endl;
+	 cout << "Ordering the two toll booths." << endl;
+	 tollBooth1.order();
+
+	tollBooth2.order();
+	cout << "Booth 1: " << tollBooth1 << endl;
+	cout << "Booth 2: " << tollBooth2 << endl << endl;
+
 	cout << "The program has finished." << endl;
 
 	return 0;

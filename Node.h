@@ -9,22 +9,23 @@ typedef EToll value_type;
 
 class Node
 {
-
-
-
-
-
-
     public:
         typedef EToll value_type; // type
+
         Node(); // constructor
+
         ~Node(); // destructor
+
         void setNextNode(Node* next_);
+
         Node* getNextNode();
 
         void setPrevNode(Node* prev_);
+
         Node* getPrevNode();
+
         void setData(value_type& data_);
+
         value_type getData();
 
     private:
@@ -33,8 +34,5 @@ class Node
         Node* prev; // a pointer to the previous Node
 
 };
-
-
-
 
 #endif //Node_header
