@@ -22,9 +22,9 @@ public:
 
     void remove(string plate);
 
-    void count();
+    int count(string count);
 
-    void tollIncome();
+    float totalIncome();
 
     void operator+=(LinkedList &tollBooth);
 

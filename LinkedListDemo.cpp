@@ -61,7 +61,7 @@ int main()
 	cout << "Start lists:" << endl;
 	cout << "Booth 1: " << tollBooth1 << endl;		// stream insertion operator (ie: operator <<)
 	cout << "Booth 2: " << tollBooth2 << endl;
-	cout << "Daily total: " << dailyReport << endl;/*
+	cout << "Daily total: " << dailyReport << endl;
 	
 	cout << "=====================================================" << endl;
 	cout << "Removing vehicle 'NIO324' from Booth 2." << endl;
@@ -69,7 +69,7 @@ int main()
 	cout << "Removing vehicle 'BYC567' from Booth 1." << endl;
 	tollBooth1.remove("BYC567");
 	cout << "Removing vehicle 'GFV349' from Booth 2." << endl;
-	tollBooth2.remove("GFV349");*/
+	tollBooth2.remove("GFV349");
 	
 	cout << "Concatenating the two lists onto list 'Daily Report'." << endl << endl;
 	dailyReport += tollBooth1;						// concatenation operator (ie: operator +=)
@@ -79,7 +79,7 @@ int main()
 	cout << "Booth 2: " << tollBooth2 << endl;
 	cout << "Daily report: " << dailyReport  << endl << endl;
 
-	/*
+
 	cout << "=====================================================" << endl;
 	cout << "Detailed report for the day: " << endl;
 	cout << "Number of vehicles of type 'Car': ";
@@ -92,7 +92,7 @@ int main()
 	cout << dailyReport.count("Truck") << endl;
 	cout << "Total charged: ";
 	cout << dailyReport.totalIncome() << endl << endl;  	// .totalIncome() function
-	
+
 	cout << "=====================================================" << endl;
 	cout << "Removing the contents of both booths from the daily report: " << endl;
 	dailyReport -= tollBooth1;						// remove overlap (ie: operator -=)
@@ -101,7 +101,7 @@ int main()
 	cout << "Booth 1: " << tollBooth1 << endl;
 	cout << "Booth 2: " << tollBooth2 << endl;
 	cout << "Daily report: " << dailyReport  << endl << endl;
-	
+/*
 	// For bonus question, uncomment this section
 	// cout << "=====BONUS QUESTION======" << endl;
 	// cout << "Ordering the two toll booths." << endl;

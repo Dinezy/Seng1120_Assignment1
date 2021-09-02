@@ -71,40 +71,47 @@ void LinkedList::addToTail(value_type data){
     }
 }
 
-void LinkedList::remove(string plate){
-
+void LinkedList::remove(string plate) {
     //first find the right node
-    for(setCurrent(); !isNULL(); setNewCurrent()) {
-        //node is now found
-        if(current->get_license.getData() == plate){
-            //assign current nodes to temp vars
-            Node* temp_prev = current->getPrevNode();
-            Node* temp_next = current->getNextNode();
+    if (size == 1) {
+        delete head;
+        head = NULL;
+        tail = NULL;
+        size--;
+    } else {
+        for (setCurrent(); !isNULL(); setNewCurrent()) {
+            //node is now found
+            if (current->getData().get_licence() == plate) {
+                //assign current nodes to temp vars
+                Node *temp_prev = current->getPrevNode();
+                Node *temp_next = current->getNextNode();
 
-            if(temp_next == NULL){
-                // on edge
-                temp_prev->setNextNode(NULL);
-                delete current;
-                temp_prev = NULL;
-                temp_next = NULL;
-                setCurrent();
-
-            }else if(temp_prev == NULL){
-                //other edge
-                temp_next->setPrevNode(NULL);
-                delete current;
-                temp_next = NULL;
-                temp_prev = NULL;
-                setCurrent();
-
-            }else {
-                //ye
-                temp_next->setPrevNode(temp_prev);
-                temp_prev->setNextNode(temp_next);
-                delete current;
-                temp_next = NULL;
-                temp_prev = NULL;
-                setCurrent();
+                if (temp_prev == NULL) {
+                    head = temp_next;
+                    temp_next->setPrevNode(NULL);
+                    delete current;
+                    temp_prev = NULL;
+                    temp_next = NULL;
+                    setCurrent();
+                    size--;
+                } else if (temp_next == NULL) {
+                    tail = temp_prev;
+                    temp_prev->setNextNode(NULL);
+                    delete current;
+                    temp_prev = NULL;
+                    temp_next = NULL;
+                    setCurrent();
+                    size--;
+                } else {
+                    //ye
+                    temp_next->setPrevNode(temp_prev);
+                    temp_prev->setNextNode(temp_next);
+                    delete current;
+                    temp_next = NULL;
+                    temp_prev = NULL;
+                    setCurrent();
+                    size--;
+                }
             }
         }
     }
@@ -120,10 +127,12 @@ void LinkedList::operator+=(LinkedList &tollBooth){
 }
 
 void LinkedList::operator-=(LinkedList &tollBooth){
-
-    
-
+    for(tollBooth.setCurrent(); !tollBooth.isNULL(); tollBooth.setNewCurrent()) {
+        remove(tollBooth.current->getData().get_licence());   //current->getData().get_licence()
+    }
+    setCurrent();
 }
+
 void LinkedList::setCurrent(){
     current = head;
 }
@@ -152,6 +161,17 @@ bool LinkedList::emptyList() {
     }
 }
 
+int LinkedList::count(string type){
+    int i = 0;
+    for (setCurrent(); !isNULL(); setNewCurrent()) {
+        if(current->getData().get_type() == type){
+            i++;
+        }
+    }
+    //setCurrent();
+    return i;
+}
+
 std::ostream &operator<<(std::ostream &out, LinkedList &tollBooth) {
     if (tollBooth.emptyList()) {
         out << "List is empty.";
@@ -164,6 +184,11 @@ std::ostream &operator<<(std::ostream &out, LinkedList &tollBooth) {
     return out;
 }
 
-void count(){};
-
-void tollIncome(){};
+float LinkedList::totalIncome(){
+    int total = 0;
+    for (setCurrent(); !isNULL(); setNewCurrent()) {
+        total += current->getData().get_charge();
+    }
+    setCurrent();
+    return total;
+}
